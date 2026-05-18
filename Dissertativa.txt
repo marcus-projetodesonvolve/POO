@@ -1,0 +1,80 @@
+Questão 01:
+Antes de escrever qualquer linha de código, é fundamental entender o problema que estamos resolvendo. A modelagem existe exatamente para isso: nos ajuda a enxergar as entidades do sistema, como elas se relacionam e o que cada uma precisa fazer. Ferramentas de IA podem gerar código rapidamente, mas sem entender a estrutura por trás, fica impossível saber se o código gerado faz sentido ou está correto. O desenvolvedor precisa ser quem valida e direciona — e isso exige conhecimento teórico sólido.
+
+Questão 02:
+Resposta: c) Programação Orientada a Objetos (POO)
+
+Justificativa
+O sistema de biblioteca é um cenário clássico para POO, e os motivos ficam claros quando analisamos cada critério pedido:
+
+Estrutura e interação das entidades:
+O sistema possui entidades bem definidas — Livro, Autor, Usuário, Empréstimo e Devolução — cada uma com suas próprias características e comportamentos. Na POO, cada uma dessas entidades vira uma classe, com seus atributos (ex: titulo, nome, dataDevolucao) e métodos (ex: realizarEmprestimo(), devolverLivro()). Isso reflete diretamente a realidade do problema.
+
+Reuso:
+Com herança e composição, é possível reutilizar código. Por exemplo, se futuramente existir um "Usuário Premium" com benefícios especiais, ele pode herdar da classe Usuario sem reescrever tudo do zero. Isso seria muito mais difícil com programação estruturada ou funcional.
+
+Evolução futura do sistema:
+A POO facilita muito a manutenção e expansão. Novos tipos de livros, novas regras de empréstimo ou novos tipos de usuário podem ser adicionados com baixo impacto no restante do código, graças ao encapsulamento e à separação de responsabilidades.
+
+Eficiência no cenário apresentado:
+O sistema envolve múltiplos objetos que interagem entre si em tempo real (um usuário faz um empréstimo, que referencia um livro, que tem um autor). A POO representa esse modelo com naturalidade, tornando o código mais legível, organizado e menos propenso a erros.
+
+Questão 03:
+
+Classes do diagrama:
+
+Livro, Autor, Usuario, Emprestimo
+
+Classe	Propriedade		Tipo
+Livro	titulo			String
+Livro	genero			String
+Autor	nome			String
+Autor	nacionalidade	String
+Usuario	nome			String
+Usuario	idade			Integer
+Emprestimo	dataRetirada	Date
+Emprestimo	dataDevolucao	Date
+
+Relacionamentos:
+
+Livro tem 1 Autor → relação 1 para 1 (ou muitos livros para 1 autor)
+
+Usuario tem muitos Empréstimos → relação 1 para muitos
+
+Emprestimo referencia 1 Livro e 1 Usuário
+
+Questão 04:
+
+Classe Livro
+cadastrarLivro(titulo, autor, genero) — fluxo de cadastro de livros
+
+armazenarInformacoes() — salva os dados do livro no sistema
+
+Classe Autor
+cadastrarAutor(nome, nacionalidade) — fluxo de cadastro de autores
+
+associarObraPublicada(livro) — vincula um livro ao autor
+
+Classe Usuario
+cadastrarUsuario(nome, idade) — fluxo de cadastro de usuários
+
+iniciarHistoricoEmprestimos() — cria o histórico ao cadastrar
+
+verificarAptoParaEmprestimo() — verifica histórico e idade
+
+consultarHistorico() — retorna os empréstimos do usuário
+
+Classe Emprestimo
+realizarEmprestimo(usuario, livro) — registra o empréstimo se o usuário estiver apto
+
+registrarDataRetirada() — grava a data de retirada
+
+registrarDataPrevistaDevolucao() — grava a data prevista
+
+recusarEmprestimo() — caso o usuário não esteja apto
+
+registrarDevolucao() — fluxo de devolução
+
+atualizarStatusLivro() — marca o livro como disponível
+
+atualizarHistoricoUsuario() — atualiza o histórico após devolução
